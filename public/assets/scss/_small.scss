@@ -1,0 +1,56 @@
+$max-width: 1200px;
+
+$color1: #222;
+
+$color2: #3d99e6;
+
+$color3: #113570;
+
+$pg-pad: .5rem;
+
+%flex-row
+{
+    display: flex;
+    flex-direction: row;
+}
+
+%flex-col
+{
+    display: flex;
+    flex-direction: column;
+}
+
+%just-cont-center
+{
+    justify-content: center;
+}
+
+%align-items-cent
+{
+    align-items: center;
+}
+
+%mx-width
+{
+    max-width: $max-width;
+}
+
+%page-pad
+{
+    padding: $pg-pad;
+}
+
+%clear-mp
+{
+    margin: 0rem;
+    padding: 0rem;
+}
+
+body{
+    color: #113570;
+    margin: .5rem;
+}
+
+h1{
+    margin: 1rem 0rem 2rem;
+}

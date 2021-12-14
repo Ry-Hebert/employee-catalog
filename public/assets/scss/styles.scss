@@ -1,0 +1,18 @@
+@import "mcr-reset.scss";
+
+@import "small";
+
+@media only screen and (min-width:34rem) 
+{
+    @import "medium";
+}
+
+@media only screen and (min-width:1200px) 
+{
+    @import "edgeCase";
+}
+
+@media only screen and (min-width:70rem) 
+{
+    @import "large";
+}
