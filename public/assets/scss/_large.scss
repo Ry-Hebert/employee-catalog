@@ -1,0 +1,17 @@
+body{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.header-content{
+    max-width: 75vw;
+}
+
+main{
+    max-width: 75vw;
+}
+
+.search{
+    max-width: 75%;
+}

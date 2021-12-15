@@ -49,6 +49,7 @@ $pg-pad: .5rem;
 body{
     color: #113570;
     margin: .5rem;
+    background-color: #ddd;
 }
 
 h1{
@@ -58,10 +59,39 @@ h1{
 header{
     display: flex;
     flex-flow: column;
+    width: 100%;
+}
+
+main{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 
 .search-bar{
+    margin: 1.5rem 0rem;
+    width: 100%;
     .employee-search-field{
-        // border-radius: 5rem !important;
+        border-radius: 5rem !important;
+        background-color: #fff !important;
+        margin: 0rem !important;
+        padding: 0rem .8rem !important;
     }
+}
+
+.search{
+    width: 100%;
+}
+
+.login{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header-content{
+    display: flex;
+    flex-flow: column;
+    align-self: center;
 }
