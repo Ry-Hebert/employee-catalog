@@ -3,6 +3,7 @@ require('dotenv').config()
 const Express = require('express')
 const Mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const Employees = require('./models/employee')
 
 const server = new Express()
 
@@ -24,6 +25,30 @@ server.get('/', (req, res) => {
         if(err){console.log(handleError(err))}
         res.json(people)
     })
+})
+
+server.get('/init-employees', (req, res) => {
+    let index = 25
+
+    Employees.remove({})
+
+    while(index < 25){
+        let newPerson = fetch(process.env.PEOPLE_Q)
+        const newPersonJson = await newPerson.json()
+        Employees.create({
+            id: newPersonJson.id,
+            name: newPersonJson.name,
+            age: newPersonJson.age,
+            gender: newPersonJson.gender,
+            interests: newPersonJson.interests,
+            address: newPersonJson.address,
+            groups: [],
+            favorite: false,
+            image: newPersonJson.image
+        })
+    }
+
+    res.send('Employee DB successfully initialized!')
 })
 
 server.get('/', (req, res) => {

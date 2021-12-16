@@ -154,6 +154,24 @@ main {
       align-self: center;
 }
 
+.add-init-db {
+  margin: 2.5rem 0rem 1rem;
+  width: 100%;
+}
+
+button {
+  border-radius: 5rem;
+}
+
+.insert-person {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+
 @media only screen and (min-width: 70rem) {
   body {
     display: -webkit-box;

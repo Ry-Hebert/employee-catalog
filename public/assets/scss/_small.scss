@@ -95,3 +95,18 @@ main{
     flex-flow: column;
     align-self: center;
 }
+
+.add-init-db{
+    margin: 2.5rem 0rem 1rem;
+    width: 100%;
+}
+
+button{
+    border-radius: 5rem;
+}
+
+.insert-person{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
