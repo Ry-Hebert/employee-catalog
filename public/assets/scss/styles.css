@@ -172,6 +172,14 @@ button {
   width: 100%;
 }
 
+.output-sec {
+  width: 100%;
+}
+
+.collection-item {
+  margin: 1rem !important;
+}
+
 @media only screen and (min-width: 70rem) {
   body {
     display: -webkit-box;
@@ -193,6 +201,15 @@ button {
   }
   .search {
     max-width: 75%;
+  }
+  .collection-item {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 2fr 3fr 2fr;
+        grid-template-columns: 2fr 3fr 2fr;
+  }
+  .collection-item .person-info {
+    margin: 0rem 2rem;
   }
 }
 /*# sourceMappingURL=styles.css.map */

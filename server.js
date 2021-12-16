@@ -4,6 +4,7 @@ const Express = require('express')
 const Mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const Employees = require('./models/employee')
+const fetch = require('node-fetch')
 
 const server = new Express()
 
@@ -13,13 +14,14 @@ server.use(Express.json())
 server.use(Express.urlencoded())
 server.use('/', Express.static('./public'))
 
-Mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+Mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 
 server.listen(process.env.PORT || 3001, () =>{
     console.log('Server is running now')
 })
 
-server.get('/', (req, res) => {
+server.get('/employees', (req, res) => {
+    console.log("You hit employees route")
     Employees.find({}, (err, people) =>{
 
         if(err){console.log(handleError(err))}
@@ -27,13 +29,13 @@ server.get('/', (req, res) => {
     })
 })
 
-server.get('/init-employees', (req, res) => {
+server.get('/init', async (req, res) => {
     let index = 25
+    console.log("hit")
+    Employees.deleteMany({},)
 
-    Employees.remove({})
-
-    while(index < 25){
-        let newPerson = fetch(process.env.PEOPLE_Q)
+    while(index > 0){
+        let newPerson = await fetch(process.env.PEOPLE_Q)
         const newPersonJson = await newPerson.json()
         Employees.create({
             id: newPersonJson.id,
@@ -46,6 +48,7 @@ server.get('/init-employees', (req, res) => {
             favorite: false,
             image: newPersonJson.image
         })
+        index--
     }
 
     res.send('Employee DB successfully initialized!')

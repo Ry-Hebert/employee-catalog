@@ -1,6 +1,5 @@
-
 const getDB = async () =>{
-    const employeeList = await fetch('model/employees')
+    const employeeList = await fetch('/employees')
     const employeeListLocal = await employeeList.json()
     console.log(`This is the Employee List fetch ${employeeListLocal}`)
     console.log(employeeListLocal)
@@ -8,11 +7,11 @@ const getDB = async () =>{
 }
 
 const initEmployeeDB = async () =>{
-    const employeeList = await fetch('model/init-employees')
+    const employeeList = await fetch('/init')
     const employeeListLocal = await employeeList.json()
     console.log(`This is the initEmployee List fetch ${employeeListLocal}`)
     console.log(employeeListLocal)
-    return employeeListLocal
+    renderEmployeeList()
 }
 
 let renderEmployeeList = async () =>{
@@ -20,27 +19,34 @@ let renderEmployeeList = async () =>{
     console.log('This is the render Employee List func')
     console.log(dbEmployeeList)
 
-    let outDest = document.querySelector('#people-out')
+    let outDest = document.querySelector('.people-out')
 
     outDest.innerHTML = ""
+    outDest.innerHTML = `<ul class="collection people-out-collection">`
+
+    let outDest2 = document.querySelector('.people-out-collection')
 
     dbEmployeeList.forEach(xItem =>{
-            outDest.innerHTML += `
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">${xItem.name}<i class="material-icons right">more_vert</i></span>
-                    <p><a href="#">This is a link</a></p>
-                </div>
-                <div class="card sticky-action">
-                    <div class="card-action">   </div>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                </div>
-            </div>
+            outDest2.innerHTML += `
+                <li class="collection-item avatar">
+                    <img src="${xItem.image}" alt="" class="circle">
+                    <div class="person-info">
+                        <span class="title">${xItem.name}</span>
+                        <p>Age: ${xItem.age}<br>
+                            Gender: ${xItem.gender}
+                        </p>
+                    </div>
+                    <div class="person-info">
+                        <p>Interests: ${xItem.interests}<br>
+                        Address: ${xItem.address}
+                        </p>
+                    </div>
+                    <a href="#!" class="secondary-content"><i class="material-icons">favorite_border</i><i class="material-icons right">more_vert</i></a>
+                </li>
             `
     })
+
+    // outDest.innerHTML += "</ul>"
 
     document.querySelectorAll('.itemTog').forEach(item => item.addEventListener('click', () => {
         let pleaseWork = item.getAttribute('value')
